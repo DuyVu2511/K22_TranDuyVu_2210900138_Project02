@@ -1,0 +1,52 @@
+﻿@model IEnumerable<K22_TranDuyVu_2210900138.Models.QUAN_TRI>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_TDVLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("TDVCreate New", "TDVCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AdminID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenDangNhap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MatKhau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.AdminID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TenDangNhap)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MatKhau)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.ActionLink("TDVEdit", "TDVEdit", new { id = item.AdminID }) |
+        @Html.ActionLink("TDVDetails", "TDVDetails", new { id = item.AdminID }) |
+        @Html.ActionLink("TDVDelete", "TDVDelete", new { id = item.AdminID })
+    </td>
+</tr>
+}
+
+</table>

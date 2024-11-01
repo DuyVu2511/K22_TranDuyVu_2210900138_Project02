@@ -1,0 +1,70 @@
+﻿@model IEnumerable<K22_TranDuyVu_2210900138.Models.Game>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_TDVLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("TDVCreate New", "TDVCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GameID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TheLoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayPhatHanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NhaPhatTrien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DanhGia)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.GameID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ten)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TheLoai)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MoTa)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NgayPhatHanh)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NhaPhatTrien)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DanhGia)
+    </td>
+    <td>
+        @Html.ActionLink("TDVEdit", "TDVEdit", new { id = item.GameID }) |
+        @Html.ActionLink("TDVDetails", "TDVDetails", new { id = item.GameID }) |
+        @Html.ActionLink("TDVDelete", "TDVDelete", new { id = item.GameID })
+    </td>
+</tr>
+}
+
+</table>

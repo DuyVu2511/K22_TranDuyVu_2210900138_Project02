@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="K22CNT3_TranDuyVu_2210900138_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DANH_GIA">
+    <Key>
+      <PropertyRef Name="ReviewID" />
+    </Key>
+    <Property Name="ReviewID" Type="Int32" Nullable="false" />
+    <Property Name="GameID" Type="Int32" />
+    <Property Name="AdminID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="KhachHangID" Type="Int32" />
+    <Property Name="NoiDungDanhGia" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DanhGia" Type="Byte" />
+    <Property Name="NgayDanhGia" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="QUAN_TRI" Relationship="Self.FK__DANH_GIA__AdminI__403A8C7D" FromRole="DANH_GIA" ToRole="QUAN_TRI" />
+    <NavigationProperty Name="Game" Relationship="Self.FK__DANH_GIA__GameID__3F466844" FromRole="DANH_GIA" ToRole="Game" />
+    <NavigationProperty Name="KHACH_HANG" Relationship="Self.FK__DANH_GIA__KhachH__412EB0B6" FromRole="DANH_GIA" ToRole="KHACH_HANG" />
+  </EntityType>
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="GameID" />
+    </Key>
+    <Property Name="GameID" Type="Int32" Nullable="false" />
+    <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TheLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NgayPhatHanh" Type="DateTime" Precision="3" />
+    <Property Name="NhaPhatTrien" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DanhGia" Type="Byte" />
+    <NavigationProperty Name="DANH_GIA" Relationship="Self.FK__DANH_GIA__GameID__3F466844" FromRole="Game" ToRole="DANH_GIA" />
+  </EntityType>
+  <EntityType Name="KHACH_HANG">
+    <Key>
+      <PropertyRef Name="KhachHangID" />
+    </Key>
+    <Property Name="KhachHangID" Type="Int32" Nullable="false" />
+    <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="NgayThamGia" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="DANH_GIA" Relationship="Self.FK__DANH_GIA__KhachH__412EB0B6" FromRole="KHACH_HANG" ToRole="DANH_GIA" />
+  </EntityType>
+  <EntityType Name="QUAN_TRI">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DANH_GIA" Relationship="Self.FK__DANH_GIA__AdminI__403A8C7D" FromRole="QUAN_TRI" ToRole="DANH_GIA" />
+  </EntityType>
+  <Association Name="FK__DANH_GIA__AdminI__403A8C7D">
+    <End Role="QUAN_TRI" Type="Self.QUAN_TRI" Multiplicity="0..1" />
+    <End Role="DANH_GIA" Type="Self.DANH_GIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUAN_TRI">
+        <PropertyRef Name="AdminID" />
+      </Principal>
+      <Dependent Role="DANH_GIA">
+        <PropertyRef Name="AdminID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DANH_GIA__GameID__3F466844">
+    <End Role="Game" Type="Self.Game" Multiplicity="0..1" />
+    <End Role="DANH_GIA" Type="Self.DANH_GIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="GameID" />
+      </Principal>
+      <Dependent Role="DANH_GIA">
+        <PropertyRef Name="GameID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DANH_GIA__KhachH__412EB0B6">
+    <End Role="KHACH_HANG" Type="Self.KHACH_HANG" Multiplicity="0..1" />
+    <End Role="DANH_GIA" Type="Self.DANH_GIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACH_HANG">
+        <PropertyRef Name="KhachHangID" />
+      </Principal>
+      <Dependent Role="DANH_GIA">
+        <PropertyRef Name="KhachHangID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TDVEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DANH_GIA" EntityType="Self.DANH_GIA" />
+    <EntitySet Name="Games" EntityType="Self.Game" />
+    <EntitySet Name="KHACH_HANG" EntityType="Self.KHACH_HANG" />
+    <EntitySet Name="QUAN_TRI" EntityType="Self.QUAN_TRI" />
+    <AssociationSet Name="FK__DANH_GIA__AdminI__403A8C7D" Association="Self.FK__DANH_GIA__AdminI__403A8C7D">
+      <End Role="QUAN_TRI" EntitySet="QUAN_TRI" />
+      <End Role="DANH_GIA" EntitySet="DANH_GIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DANH_GIA__GameID__3F466844" Association="Self.FK__DANH_GIA__GameID__3F466844">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="DANH_GIA" EntitySet="DANH_GIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DANH_GIA__KhachH__412EB0B6" Association="Self.FK__DANH_GIA__KhachH__412EB0B6">
+      <End Role="KHACH_HANG" EntitySet="KHACH_HANG" />
+      <End Role="DANH_GIA" EntitySet="DANH_GIA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

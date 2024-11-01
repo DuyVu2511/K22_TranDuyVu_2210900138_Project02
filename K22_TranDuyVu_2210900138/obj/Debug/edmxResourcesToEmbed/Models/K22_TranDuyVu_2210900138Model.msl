@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="K22CNT3_TranDuyVu_2210900138_dbModelStoreContainer" CdmEntityContainer="TDVEntities">
+    <EntitySetMapping Name="DANH_GIA">
+      <EntityTypeMapping TypeName="K22CNT3_TranDuyVu_2210900138_dbModel.DANH_GIA">
+        <MappingFragment StoreEntitySet="DANH_GIA">
+          <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+          <ScalarProperty Name="GameID" ColumnName="GameID" />
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+          <ScalarProperty Name="KhachHangID" ColumnName="KhachHangID" />
+          <ScalarProperty Name="NoiDungDanhGia" ColumnName="NoiDungDanhGia" />
+          <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
+          <ScalarProperty Name="NgayDanhGia" ColumnName="NgayDanhGia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="K22CNT3_TranDuyVu_2210900138_dbModel.Game">
+        <MappingFragment StoreEntitySet="Game">
+          <ScalarProperty Name="GameID" ColumnName="GameID" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="TheLoai" ColumnName="TheLoai" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="NgayPhatHanh" ColumnName="NgayPhatHanh" />
+          <ScalarProperty Name="NhaPhatTrien" ColumnName="NhaPhatTrien" />
+          <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KHACH_HANG">
+      <EntityTypeMapping TypeName="K22CNT3_TranDuyVu_2210900138_dbModel.KHACH_HANG">
+        <MappingFragment StoreEntitySet="KHACH_HANG">
+          <ScalarProperty Name="KhachHangID" ColumnName="KhachHangID" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="NgayThamGia" ColumnName="NgayThamGia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QUAN_TRI">
+      <EntityTypeMapping TypeName="K22CNT3_TranDuyVu_2210900138_dbModel.QUAN_TRI">
+        <MappingFragment StoreEntitySet="QUAN_TRI">
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+          <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,73 @@
+﻿@model K22_TranDuyVu_2210900138.Models.Game
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_TDVLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Game</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GameID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GameID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TheLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TheLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayPhatHanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayPhatHanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhaPhatTrien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaPhatTrien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DanhGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DanhGia)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("TDVEdit", "TDVEdit", new { id = Model.GameID }) |
+    @Html.ActionLink("Back to List", "TDVIndex")
+</p>

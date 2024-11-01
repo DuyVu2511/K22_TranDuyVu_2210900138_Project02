@@ -1,0 +1,64 @@
+﻿@model IEnumerable<K22_TranDuyVu_2210900138.Models.KHACH_HANG>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_TDVLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("TDVCreate New", "TDVCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KhachHangID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayThamGia)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.KhachHangID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ten)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DiaChi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SoDienThoai)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NgayThamGia)
+    </td>
+    <td>
+        @Html.ActionLink("TDVEdit", "TDVEdit", new { id = item.KhachHangID }) |
+        @Html.ActionLink("TDVDetails", "TDVDetails", new { id = item.KhachHangID }) |
+        @Html.ActionLink("TDVDelete", "TDVDelete", new { id = item.KhachHangID })
+    </td>
+</tr>
+}
+
+</table>

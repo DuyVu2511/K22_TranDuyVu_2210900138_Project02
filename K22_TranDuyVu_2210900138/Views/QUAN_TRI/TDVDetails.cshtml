@@ -1,0 +1,51 @@
+﻿@model K22_TranDuyVu_2210900138.Models.QUAN_TRI
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_TDVLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>QUAN_TRI</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AdminID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdminID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDangNhap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDangNhap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatKhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("TDVEdit", "TDVEdit", new { id = Model.AdminID }) |
+    @Html.ActionLink("Back to List", "TDVIndex")
+</p>

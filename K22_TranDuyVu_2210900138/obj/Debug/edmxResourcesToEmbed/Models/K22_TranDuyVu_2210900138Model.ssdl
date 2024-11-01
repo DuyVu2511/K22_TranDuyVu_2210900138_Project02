@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="K22CNT3_TranDuyVu_2210900138_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DANH_GIA">
+    <Key>
+      <PropertyRef Name="ReviewID" />
+    </Key>
+    <Property Name="ReviewID" Type="int" Nullable="false" />
+    <Property Name="GameID" Type="int" />
+    <Property Name="AdminID" Type="varchar" MaxLength="50" />
+    <Property Name="KhachHangID" Type="int" />
+    <Property Name="NoiDungDanhGia" Type="varchar" MaxLength="500" />
+    <Property Name="DanhGia" Type="tinyint" />
+    <Property Name="NgayDanhGia" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="GameID" />
+    </Key>
+    <Property Name="GameID" Type="int" Nullable="false" />
+    <Property Name="Ten" Type="varchar" MaxLength="100" />
+    <Property Name="TheLoai" Type="varchar" MaxLength="50" />
+    <Property Name="MoTa" Type="varchar" MaxLength="500" />
+    <Property Name="NgayPhatHanh" Type="datetime" />
+    <Property Name="NhaPhatTrien" Type="varchar" MaxLength="100" />
+    <Property Name="DanhGia" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="KHACH_HANG">
+    <Key>
+      <PropertyRef Name="KhachHangID" />
+    </Key>
+    <Property Name="KhachHangID" Type="int" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="100" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="SoDienThoai" Type="nvarchar" MaxLength="20" />
+    <Property Name="NgayThamGia" Type="date" />
+  </EntityType>
+  <EntityType Name="QUAN_TRI">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TenDangNhap" Type="varchar" MaxLength="50" />
+    <Property Name="MatKhau" Type="varchar" MaxLength="30" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK__DANH_GIA__AdminI__403A8C7D">
+    <End Role="QUAN_TRI" Type="Self.QUAN_TRI" Multiplicity="0..1" />
+    <End Role="DANH_GIA" Type="Self.DANH_GIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUAN_TRI">
+        <PropertyRef Name="AdminID" />
+      </Principal>
+      <Dependent Role="DANH_GIA">
+        <PropertyRef Name="AdminID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DANH_GIA__GameID__3F466844">
+    <End Role="Game" Type="Self.Game" Multiplicity="0..1" />
+    <End Role="DANH_GIA" Type="Self.DANH_GIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="GameID" />
+      </Principal>
+      <Dependent Role="DANH_GIA">
+        <PropertyRef Name="GameID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DANH_GIA__KhachH__412EB0B6">
+    <End Role="KHACH_HANG" Type="Self.KHACH_HANG" Multiplicity="0..1" />
+    <End Role="DANH_GIA" Type="Self.DANH_GIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACH_HANG">
+        <PropertyRef Name="KhachHangID" />
+      </Principal>
+      <Dependent Role="DANH_GIA">
+        <PropertyRef Name="KhachHangID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="K22CNT3_TranDuyVu_2210900138_dbModelStoreContainer">
+    <EntitySet Name="DANH_GIA" EntityType="Self.DANH_GIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KHACH_HANG" EntityType="Self.KHACH_HANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QUAN_TRI" EntityType="Self.QUAN_TRI" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__DANH_GIA__AdminI__403A8C7D" Association="Self.FK__DANH_GIA__AdminI__403A8C7D">
+      <End Role="QUAN_TRI" EntitySet="QUAN_TRI" />
+      <End Role="DANH_GIA" EntitySet="DANH_GIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DANH_GIA__GameID__3F466844" Association="Self.FK__DANH_GIA__GameID__3F466844">
+      <End Role="Game" EntitySet="Game" />
+      <End Role="DANH_GIA" EntitySet="DANH_GIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DANH_GIA__KhachH__412EB0B6" Association="Self.FK__DANH_GIA__KhachH__412EB0B6">
+      <End Role="KHACH_HANG" EntitySet="KHACH_HANG" />
+      <End Role="DANH_GIA" EntitySet="DANH_GIA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

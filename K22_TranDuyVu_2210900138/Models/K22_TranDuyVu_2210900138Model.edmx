@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="K22CNT3_TranDuyVu_2210900138_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DANH_GIA">
+          <Key>
+            <PropertyRef Name="ReviewID" />
+          </Key>
+          <Property Name="ReviewID" Type="int" Nullable="false" />
+          <Property Name="GameID" Type="int" />
+          <Property Name="AdminID" Type="varchar" MaxLength="50" />
+          <Property Name="KhachHangID" Type="int" />
+          <Property Name="NoiDungDanhGia" Type="varchar" MaxLength="500" />
+          <Property Name="DanhGia" Type="tinyint" />
+          <Property Name="NgayDanhGia" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="GameID" />
+          </Key>
+          <Property Name="GameID" Type="int" Nullable="false" />
+          <Property Name="Ten" Type="varchar" MaxLength="100" />
+          <Property Name="TheLoai" Type="varchar" MaxLength="50" />
+          <Property Name="MoTa" Type="varchar" MaxLength="500" />
+          <Property Name="NgayPhatHanh" Type="datetime" />
+          <Property Name="NhaPhatTrien" Type="varchar" MaxLength="100" />
+          <Property Name="DanhGia" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="KHACH_HANG">
+          <Key>
+            <PropertyRef Name="KhachHangID" />
+          </Key>
+          <Property Name="KhachHangID" Type="int" Nullable="false" />
+          <Property Name="Ten" Type="nvarchar" MaxLength="100" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="SoDienThoai" Type="nvarchar" MaxLength="20" />
+          <Property Name="NgayThamGia" Type="date" />
+        </EntityType>
+        <EntityType Name="QUAN_TRI">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenDangNhap" Type="varchar" MaxLength="50" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="30" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__DANH_GIA__AdminI__403A8C7D">
+          <End Role="QUAN_TRI" Type="Self.QUAN_TRI" Multiplicity="0..1" />
+          <End Role="DANH_GIA" Type="Self.DANH_GIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QUAN_TRI">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="DANH_GIA">
+              <PropertyRef Name="AdminID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DANH_GIA__GameID__3F466844">
+          <End Role="Game" Type="Self.Game" Multiplicity="0..1" />
+          <End Role="DANH_GIA" Type="Self.DANH_GIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="GameID" />
+            </Principal>
+            <Dependent Role="DANH_GIA">
+              <PropertyRef Name="GameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DANH_GIA__KhachH__412EB0B6">
+          <End Role="KHACH_HANG" Type="Self.KHACH_HANG" Multiplicity="0..1" />
+          <End Role="DANH_GIA" Type="Self.DANH_GIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACH_HANG">
+              <PropertyRef Name="KhachHangID" />
+            </Principal>
+            <Dependent Role="DANH_GIA">
+              <PropertyRef Name="KhachHangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="K22CNT3_TranDuyVu_2210900138_dbModelStoreContainer">
+          <EntitySet Name="DANH_GIA" EntityType="Self.DANH_GIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHACH_HANG" EntityType="Self.KHACH_HANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QUAN_TRI" EntityType="Self.QUAN_TRI" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__DANH_GIA__AdminI__403A8C7D" Association="Self.FK__DANH_GIA__AdminI__403A8C7D">
+            <End Role="QUAN_TRI" EntitySet="QUAN_TRI" />
+            <End Role="DANH_GIA" EntitySet="DANH_GIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DANH_GIA__GameID__3F466844" Association="Self.FK__DANH_GIA__GameID__3F466844">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="DANH_GIA" EntitySet="DANH_GIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DANH_GIA__KhachH__412EB0B6" Association="Self.FK__DANH_GIA__KhachH__412EB0B6">
+            <End Role="KHACH_HANG" EntitySet="KHACH_HANG" />
+            <End Role="DANH_GIA" EntitySet="DANH_GIA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="K22CNT3_TranDuyVu_2210900138_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DANH_GIA">
+          <Key>
+            <PropertyRef Name="ReviewID" />
+          </Key>
+          <Property Name="ReviewID" Type="Int32" Nullable="false" />
+          <Property Name="GameID" Type="Int32" />
+          <Property Name="AdminID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KhachHangID" Type="Int32" />
+          <Property Name="NoiDungDanhGia" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DanhGia" Type="Byte" />
+          <Property Name="NgayDanhGia" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="QUAN_TRI" Relationship="Self.FK__DANH_GIA__AdminI__403A8C7D" FromRole="DANH_GIA" ToRole="QUAN_TRI" />
+          <NavigationProperty Name="Game" Relationship="Self.FK__DANH_GIA__GameID__3F466844" FromRole="DANH_GIA" ToRole="Game" />
+          <NavigationProperty Name="KHACH_HANG" Relationship="Self.FK__DANH_GIA__KhachH__412EB0B6" FromRole="DANH_GIA" ToRole="KHACH_HANG" />
+        </EntityType>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="GameID" />
+          </Key>
+          <Property Name="GameID" Type="Int32" Nullable="false" />
+          <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TheLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NgayPhatHanh" Type="DateTime" Precision="3" />
+          <Property Name="NhaPhatTrien" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DanhGia" Type="Byte" />
+          <NavigationProperty Name="DANH_GIA" Relationship="Self.FK__DANH_GIA__GameID__3F466844" FromRole="Game" ToRole="DANH_GIA" />
+        </EntityType>
+        <EntityType Name="KHACH_HANG">
+          <Key>
+            <PropertyRef Name="KhachHangID" />
+          </Key>
+          <Property Name="KhachHangID" Type="Int32" Nullable="false" />
+          <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NgayThamGia" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="DANH_GIA" Relationship="Self.FK__DANH_GIA__KhachH__412EB0B6" FromRole="KHACH_HANG" ToRole="DANH_GIA" />
+        </EntityType>
+        <EntityType Name="QUAN_TRI">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MatKhau" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DANH_GIA" Relationship="Self.FK__DANH_GIA__AdminI__403A8C7D" FromRole="QUAN_TRI" ToRole="DANH_GIA" />
+        </EntityType>
+        <Association Name="FK__DANH_GIA__AdminI__403A8C7D">
+          <End Role="QUAN_TRI" Type="Self.QUAN_TRI" Multiplicity="0..1" />
+          <End Role="DANH_GIA" Type="Self.DANH_GIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QUAN_TRI">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="DANH_GIA">
+              <PropertyRef Name="AdminID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DANH_GIA__GameID__3F466844">
+          <End Role="Game" Type="Self.Game" Multiplicity="0..1" />
+          <End Role="DANH_GIA" Type="Self.DANH_GIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="GameID" />
+            </Principal>
+            <Dependent Role="DANH_GIA">
+              <PropertyRef Name="GameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DANH_GIA__KhachH__412EB0B6">
+          <End Role="KHACH_HANG" Type="Self.KHACH_HANG" Multiplicity="0..1" />
+          <End Role="DANH_GIA" Type="Self.DANH_GIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACH_HANG">
+              <PropertyRef Name="KhachHangID" />
+            </Principal>
+            <Dependent Role="DANH_GIA">
+              <PropertyRef Name="KhachHangID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TDVEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DANH_GIA" EntityType="Self.DANH_GIA" />
+          <EntitySet Name="Games" EntityType="Self.Game" />
+          <EntitySet Name="KHACH_HANG" EntityType="Self.KHACH_HANG" />
+          <EntitySet Name="QUAN_TRI" EntityType="Self.QUAN_TRI" />
+          <AssociationSet Name="FK__DANH_GIA__AdminI__403A8C7D" Association="Self.FK__DANH_GIA__AdminI__403A8C7D">
+            <End Role="QUAN_TRI" EntitySet="QUAN_TRI" />
+            <End Role="DANH_GIA" EntitySet="DANH_GIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DANH_GIA__GameID__3F466844" Association="Self.FK__DANH_GIA__GameID__3F466844">
+            <End Role="Game" EntitySet="Games" />
+            <End Role="DANH_GIA" EntitySet="DANH_GIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DANH_GIA__KhachH__412EB0B6" Association="Self.FK__DANH_GIA__KhachH__412EB0B6">
+            <End Role="KHACH_HANG" EntitySet="KHACH_HANG" />
+            <End Role="DANH_GIA" EntitySet="DANH_GIA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="K22CNT3_TranDuyVu_2210900138_dbModelStoreContainer" CdmEntityContainer="TDVEntities">
+          <EntitySetMapping Name="DANH_GIA">
+            <EntityTypeMapping TypeName="K22CNT3_TranDuyVu_2210900138_dbModel.DANH_GIA">
+              <MappingFragment StoreEntitySet="DANH_GIA">
+                <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="KhachHangID" ColumnName="KhachHangID" />
+                <ScalarProperty Name="NoiDungDanhGia" ColumnName="NoiDungDanhGia" />
+                <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
+                <ScalarProperty Name="NgayDanhGia" ColumnName="NgayDanhGia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="K22CNT3_TranDuyVu_2210900138_dbModel.Game">
+              <MappingFragment StoreEntitySet="Game">
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="TheLoai" ColumnName="TheLoai" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="NgayPhatHanh" ColumnName="NgayPhatHanh" />
+                <ScalarProperty Name="NhaPhatTrien" ColumnName="NhaPhatTrien" />
+                <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHACH_HANG">
+            <EntityTypeMapping TypeName="K22CNT3_TranDuyVu_2210900138_dbModel.KHACH_HANG">
+              <MappingFragment StoreEntitySet="KHACH_HANG">
+                <ScalarProperty Name="KhachHangID" ColumnName="KhachHangID" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+                <ScalarProperty Name="NgayThamGia" ColumnName="NgayThamGia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QUAN_TRI">
+            <EntityTypeMapping TypeName="K22CNT3_TranDuyVu_2210900138_dbModel.QUAN_TRI">
+              <MappingFragment StoreEntitySet="QUAN_TRI">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
